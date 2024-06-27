@@ -17,7 +17,7 @@ const bindMousetrap = (el, value, vnode, preventDefault) => {
     } else {
       // When on a native HTMLElement
       ev.detail = combo;
-      const evx = new CustomEvent("mousetrap", ev);
+      const evx = new CustomEvent("mousetrap", { original: ev, combo} );
       el.dispatchEvent(evx);
     }
   });
