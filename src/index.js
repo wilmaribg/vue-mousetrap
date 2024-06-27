@@ -7,13 +7,13 @@ import Mousetrap from "mousetrap";
  * @returns {void}
  */
 const bindMousetrap = (el, value, vnode, preventDefault) => {
-  Mousetrap.bind(value, ev => {
+  Mousetrap.bind(value, (ev, combo) => {
     if (preventDefault) {
       ev.preventDefault();
     }
     if (vnode.component) {
       // When on a Vue component
-      vnode.component.emit("mousetrap", ev);
+      vnode.component.emit("mousetrap", ev, combo);
     } else {
       // When on a native HTMLElement
       const evx = new CustomEvent("mousetrap", ev);
